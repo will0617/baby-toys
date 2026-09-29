@@ -1,0 +1,108 @@
+import type { Vehicle } from '../types';
+
+export const trains: Vehicle[] = [
+  {
+    id: 'steam-train',
+    nameZh: '蒸汽火车',
+    nameEn: 'Steam Train',
+    category: 'trains',
+    image: '/images/vehicles/steam-train.webp',
+    factZh: '蒸汽火车是最古老的火车，烧煤把水变成蒸汽来开动。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Lok_99_222_im_Bahnhof_Wernigerode.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'Richard Bartz',
+    },
+  },
+  {
+    id: 'high-speed-train',
+    nameZh: '高铁',
+    nameEn: 'High-Speed Train',
+    category: 'trains',
+    image: '/images/vehicles/high-speed-train.webp',
+    factZh: '高铁是跑得最快的火车，一个小时能跑三百多公里。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Series-N700a-Mt.Fuji.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'MaedaAkihiko',
+    },
+  },
+  {
+    id: 'subway',
+    nameZh: '地铁',
+    nameEn: 'Subway Train',
+    category: 'trains',
+    image: '/images/vehicles/subway.webp',
+    factZh: '地铁在城市的地底下开，不用等红绿灯。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:U9_im_U-Bahnhof_Zoologischer_Garten.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'JoachimKohler-HB',
+    },
+  },
+  {
+    id: 'tram',
+    nameZh: '有轨电车',
+    nameEn: 'Tram',
+    category: 'trains',
+    image: '/images/vehicles/tram.webp',
+    factZh: '有轨电车沿着地上的铁轨慢慢开，叮叮当当地响。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Kyiv_Express_Tram_755_2019_G1.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'George Chernilevsky',
+    },
+  },
+  {
+    id: 'freight-train',
+    nameZh: '货运列车',
+    nameEn: 'Freight Train',
+    category: 'trains',
+    image: '/images/vehicles/freight-train.webp',
+    factZh: '货运列车身体特别长，能拉好多好多货物。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:EWS_freight_train_heads_north_from_Oxford_-_geograph.org.uk_-_1670491.jpg',
+      license: 'CC BY-SA 2.0',
+      author: 'Kenneth Yarham',
+    },
+  },
+  {
+    id: 'green-train',
+    nameZh: '绿皮火车',
+    nameEn: 'Green Train',
+    category: 'trains',
+    image: '/images/vehicles/green-train.webp',
+    factZh: '绿皮火车开得慢慢的，车厢是绿色的，窗户能打开。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:YZ22_337445_20110901.jpg',
+      license: 'CC BY-SA 3.0',
+      author: '颐园新居',
+    },
+  },
+  {
+    id: 'monorail',
+    nameZh: '单轨列车',
+    nameEn: 'Monorail',
+    category: 'trains',
+    image: '/images/vehicles/monorail.webp',
+    factZh: '单轨列车骑在一条大梁上跑，像骑着独轮车。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Tama-Toshi-Monorail-Line_Series1116-1113.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'MaedaAkihiko',
+    },
+  },
+  {
+    id: 'cog-railway',
+    nameZh: '齿轨火车',
+    nameEn: 'Cog Railway',
+    category: 'trains',
+    image: '/images/vehicles/cog-railway.webp',
+    factZh: '齿轨火车用齿轮咬住轨道，能爬上陡陡的大山。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:WAB_Grindelwald_DSC_6812.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'The STB',
+    },
+  },
+];
