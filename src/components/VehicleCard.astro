@@ -1,0 +1,48 @@
+---
+import type { Vehicle } from '../data/types';
+
+interface Props {
+  vehicle: Vehicle;
+}
+const { vehicle } = Astro.props;
+---
+<a class="card" href={`/vehicle/${vehicle.id}`}>
+  <img
+    src={vehicle.image}
+    alt={`${vehicle.nameZh}（${vehicle.nameEn}）真实照片`}
+    loading="lazy"
+    width="1200"
+    height="900"
+  />
+  <div class="names">
+    <span class="zh">{vehicle.nameZh}</span>
+    <span class="en">{vehicle.nameEn}</span>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: block;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: inherit;
+  }
+  .card:active { transform: scale(0.98); }
+  .card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #eee;
+  }
+  .names {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .zh { font-size: 20px; font-weight: 700; }
+  .en { font-size: 13px; color: #888; }
+</style>
