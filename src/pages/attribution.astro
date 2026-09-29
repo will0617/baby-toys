@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { categories } from '../data/categories';
+import { vehicles } from '../data/vehicles';
+---
+<Layout title="图片来源与致谢 · 宝宝交通工具图鉴">
+  <main class="attr">
+    <a class="back" href="/">🏠 首页</a>
+    <h1>图片来源与致谢</h1>
+    <p class="note">
+      本站照片来自 Wikimedia Commons 等可免费使用的图库，遵循各自许可协议：
+    </p>
+    {categories.map((c) => (
+      <section>
+        <h2>{c.emoji} {c.nameZh}</h2>
+        <ul>
+          {vehicles
+            .filter((v) => v.category === c.id)
+            .map((v) => (
+              <li>
+                <strong>{v.nameZh}</strong> · 作者：{v.imageSource.author || '未注明'} ·
+                <a href={v.imageSource.url} target="_blank" rel="noopener noreferrer">
+                  来源页
+                </a>
+                · {v.imageSource.license}
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<style>
+  .attr { max-width: 720px; margin: 0 auto; padding: 8px 16px 32px; font-size: 15px; }
+  .back {
+    text-decoration: none;
+    color: #4a90d9;
+    padding: 10px 12px;
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+  }
+  h1 { font-size: 24px; }
+  h2 { font-size: 18px; margin-top: 24px; }
+  .note { color: #777; }
+  ul { padding-left: 20px; line-height: 1.9; }
+  a { color: #4a90d9; }
+</style>
