@@ -1,0 +1,108 @@
+import type { Vehicle } from '../types';
+
+export const cars: Vehicle[] = [
+  {
+    id: 'sedan',
+    nameZh: '轿车',
+    nameEn: 'Sedan',
+    category: 'cars',
+    image: '/images/vehicles/sedan.webp',
+    factZh: '轿车是最常见的汽车，爸爸妈妈开着它接送宝宝。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:2018_Toyota_Corolla_(ZRE172R)_Ascent_sedan_(2018-11-02)_02.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'EurovisionNim',
+    },
+  },
+  {
+    id: 'taxi',
+    nameZh: '出租车',
+    nameEn: 'Taxi',
+    category: 'cars',
+    image: '/images/vehicles/taxi.webp',
+    factZh: '出租车顶上有个小灯牌，招招手它就停下来。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:New_York_Yellow_cab_Ford_Crown_Victoria_1020716.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Ermell',
+    },
+  },
+  {
+    id: 'bus',
+    nameZh: '公交车',
+    nameEn: 'Bus',
+    category: 'cars',
+    image: '/images/vehicles/bus.webp',
+    factZh: '公交车又高又长，一趟能装下好多乘客。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:ETS_Bus_Route_562_West_Edmonton_Mall.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Vanstrat',
+    },
+  },
+  {
+    id: 'truck',
+    nameZh: '卡车',
+    nameEn: 'Truck',
+    category: 'cars',
+    image: '/images/vehicles/truck.webp',
+    factZh: '卡车力气最大，车斗里装着满满的货物。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Budweiser_beverage_delivery_truck_Plymouth_Michigan.JPG',
+      license: 'CC BY 3.0',
+      author: 'Dwight Burdette',
+    },
+  },
+  {
+    id: 'sports-car',
+    nameZh: '跑车',
+    nameEn: 'Sports Car',
+    category: 'cars',
+    image: '/images/vehicles/sports-car.webp',
+    factZh: '跑车车身矮矮的，跑起来像风一样快。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Porsche_356_No._1_Roadster,_70_Years_Porsche_Sports_Car,_Berlin_(1X7A3875).jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Matti Blume',
+    },
+  },
+  {
+    id: 'suv',
+    nameZh: '越野车',
+    nameEn: 'SUV',
+    category: 'cars',
+    image: '/images/vehicles/suv.webp',
+    factZh: '越野车轮子高高的，能爬山也能过小河。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Mitsubishi_Pajero_Mk1_Offroad.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'KGC626',
+    },
+  },
+  {
+    id: 'van',
+    nameZh: '面包车',
+    nameEn: 'Van',
+    category: 'cars',
+    image: '/images/vehicles/van.webp',
+    factZh: '面包车肚子大大的，能坐人也能装东西。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:2017_Toyota_HiAce_(TRH201R)_LWB_van_(2018-10-01)_01.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'EurovisionNim',
+    },
+  },
+  {
+    id: 'motorcycle',
+    nameZh: '摩托车',
+    nameEn: 'Motorcycle',
+    category: 'cars',
+    image: '/images/vehicles/motorcycle.webp',
+    factZh: '摩托车只有两个轮子，骑的时候要戴好头盔。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Honda_Goldwing_Main_Street_downtown_Montpelier_VT_November_2016.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'Artaxerxes',
+    },
+  },
+];
