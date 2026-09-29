@@ -1,0 +1,108 @@
+import type { Vehicle } from '../types';
+
+export const emergency: Vehicle[] = [
+  {
+    id: 'fire-truck',
+    nameZh: '消防车',
+    nameEn: 'Fire Truck',
+    category: 'emergency',
+    image: '/images/vehicles/fire-truck.webp',
+    factZh: '消防车是红色的，呜哇呜哇地跑去救火。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Fire_engine_ZIL-131_2009_G1.jpg',
+      license: 'Public Domain',
+      author: 'George Chernilevsky',
+    },
+  },
+  {
+    id: 'ambulance',
+    nameZh: '救护车',
+    nameEn: 'Ambulance',
+    category: 'emergency',
+    image: '/images/vehicles/ambulance.webp',
+    factZh: '救护车白白的，载着医生去帮助生病的人。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Mercedes_Benz_Sprinter_Ambulance_Prague_2012.JPG',
+      license: 'CC BY-SA 3.0',
+      author: 'Kevin.B',
+    },
+  },
+  {
+    id: 'police-car',
+    nameZh: '警车',
+    nameEn: 'Police Car',
+    category: 'emergency',
+    image: '/images/vehicles/police-car.webp',
+    factZh: '警车闪着蓝色的警灯，保护大家的安全。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Kyiv_patrol_police_car_at_Institutska_street.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Tohaomg',
+    },
+  },
+  {
+    id: 'tow-truck',
+    nameZh: '清障车',
+    nameEn: 'Tow Truck',
+    category: 'emergency',
+    image: '/images/vehicles/tow-truck.webp',
+    factZh: '清障车有长长的吊钩，把坏掉的汽车拖走。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Crash_Towing_%26_Recovery_International_Workstar_heavy_duty_tow_truck_(19366713269).jpg',
+      license: 'CC BY-SA 2.0',
+      author: 'Bob Adams',
+    },
+  },
+  {
+    id: 'rescue-helicopter',
+    nameZh: '救援直升机',
+    nameEn: 'Rescue Helicopter',
+    category: 'emergency',
+    image: '/images/vehicles/rescue-helicopter.webp',
+    factZh: '救援直升机飞到山上，把需要帮助的人送到医院。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Zepper-BK_117-C2-(EC145)-SchweizerischeRettungsflugwacht.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'Matthias Zepper',
+    },
+  },
+  {
+    id: 'fire-boat',
+    nameZh: '消防艇',
+    nameEn: 'Fire Boat',
+    category: 'emergency',
+    image: '/images/vehicles/fire-boat.webp',
+    factZh: '消防艇会喷出高高的水柱，扑灭船上的火。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Tacoma,_WA_Fireboat_Defiance_01.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'Joe Mabel',
+    },
+  },
+  {
+    id: 'patrol-boat',
+    nameZh: '巡逻艇',
+    nameEn: 'Patrol Boat',
+    category: 'emergency',
+    image: '/images/vehicles/patrol-boat.webp',
+    factZh: '巡逻艇在大海上开得飞快，守护海边的安全。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Turkish_Coast_Guard_Kaan_33_class_patrol_boat_312.jpg',
+      license: 'CC BY 3.0',
+      author: 'Eusebius',
+    },
+  },
+  {
+    id: 'snow-plow',
+    nameZh: '铲雪车',
+    nameEn: 'Snow Plow',
+    category: 'emergency',
+    image: '/images/vehicles/snow-plow.webp',
+    factZh: '铲雪车前面有大铲子，把积雪推到马路两边。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Volvo_H061_loader_with_Tellefsdal_V90_snowplow_Winter_Road_Congress_front.jpg',
+      license: 'CC BY 4.0',
+      author: 'Antti Leppänen',
+    },
+  },
+];
