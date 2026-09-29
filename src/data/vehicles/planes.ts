@@ -1,0 +1,108 @@
+import type { Vehicle } from '../types';
+
+export const planes: Vehicle[] = [
+  {
+    id: 'airliner',
+    nameZh: '大客机',
+    nameEn: 'Airliner',
+    category: 'planes',
+    image: '/images/vehicles/airliner.webp',
+    factZh: '大客机像一只大铁鸟，能带着人们飞过大海洋。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:B-747_Iberia.jpg',
+      license: 'CC BY 2.0',
+      author: 'Iberia Airlines',
+    },
+  },
+  {
+    id: 'helicopter',
+    nameZh: '直升机',
+    nameEn: 'Helicopter',
+    category: 'planes',
+    image: '/images/vehicles/helicopter.webp',
+    factZh: '直升机头顶的螺旋桨转呀转，能直接飞上天空。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Eurocopter_AS365_Dauphin_de_la_Aviaci%C3%B3n_Naval_de_Chile.JPG',
+      license: 'CC BY-SA 3.0',
+      author: 'Oscar Barrantes Cárdenas',
+    },
+  },
+  {
+    id: 'propeller-plane',
+    nameZh: '螺旋桨飞机',
+    nameEn: 'Propeller Plane',
+    category: 'planes',
+    image: '/images/vehicles/propeller-plane.webp',
+    factZh: '螺旋桨飞机靠前面的桨叶转动，推着自己往前飞。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Cessna_208_landing_in_Toronto.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'MarcusObal',
+    },
+  },
+  {
+    id: 'fighter-jet',
+    nameZh: '战斗机',
+    nameEn: 'Fighter Jet',
+    category: 'planes',
+    image: '/images/vehicles/fighter-jet.webp',
+    factZh: '战斗机飞得比声音还快，保护着我们的天空。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:F-16_June_2008.jpg',
+      license: 'Public Domain',
+      author: 'Master Sgt. Andy Dunaway, U.S. Air Force',
+    },
+  },
+  {
+    id: 'seaplane',
+    nameZh: '水上飞机',
+    nameEn: 'Seaplane',
+    category: 'planes',
+    image: '/images/vehicles/seaplane.webp',
+    factZh: '水上飞机的肚子像小船，能直接停在河面上。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Floatplane_seaplane_on_water.jpg',
+      license: 'Public Domain',
+      author: 'Tim McKnight, U.S. Fish and Wildlife Service',
+    },
+  },
+  {
+    id: 'hot-air-balloon',
+    nameZh: '热气球',
+    nameEn: 'Hot Air Balloon',
+    category: 'planes',
+    image: '/images/vehicles/hot-air-balloon.webp',
+    factZh: '热气球是大大的气球，坐着它慢慢飘上天。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Balloon_over_Luxor_-_Egypt_denoised.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'Marcosleal',
+    },
+  },
+  {
+    id: 'glider',
+    nameZh: '滑翔机',
+    nameEn: 'Glider',
+    category: 'planes',
+    image: '/images/vehicles/glider.webp',
+    factZh: '滑翔机没有发动机，像纸飞机一样乘着风飞。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Aerotowing_glider_remorquage_planeur.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'Myrabella',
+    },
+  },
+  {
+    id: 'cargo-plane',
+    nameZh: '货机',
+    nameEn: 'Cargo Plane',
+    category: 'planes',
+    image: '/images/vehicles/cargo-plane.webp',
+    factZh: '货机是圆滚滚的大飞机，肚子里能装下小汽车。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Boeing_747_Large_Cargo_Freighter_(7911113620).jpg',
+      license: 'CC BY 2.0',
+      author: 'Clemens Vasters',
+    },
+  },
+];
