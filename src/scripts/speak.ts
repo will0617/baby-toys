@@ -28,7 +28,9 @@ export function pickVoice<T extends SimpleVoice>(voices: T[], lang: string): T |
     exact.length > 0 ? exact : voices.filter((v) => langOf(v).startsWith(normalized.slice(0, 2)));
   if (pool.length === 0) return undefined;
 
-  const preferred = pool.find((v) => PREFERRED_VOICE.test(v.name));
+  const preferred =
+    pool.find((v) => /google/i.test(v.name)) ??
+    pool.find((v) => PREFERRED_VOICE.test(v.name));
   if (preferred) return preferred;
 
   const normal = pool.find((v) => !NOVELTY_VOICE.test(v.name));
