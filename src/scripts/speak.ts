@@ -42,14 +42,44 @@ export function isSpeechSupported(): boolean {
 }
 
 /**
+ * Chrome 的声音列表是异步加载的：页面刚加载完 getVoices() 返回空数组，
+ * 就绪后才触发 voiceschanged。若不等待，只能拿到引擎自选的声音（可能是搞怪声音）。
+ * 就绪则立即返回；否则等待 voiceschanged，超时后返回当时的列表（可能仍为空）。
+ */
+async function voicesReady(timeoutMs: number): Promise<SpeechSynthesisVoice[]> {
+  const synth = window.speechSynthesis;
+  if (synth.getVoices().length > 0) return synth.getVoices();
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const settle = () => {
+      if (settled) return;
+      settled = true;
+      resolve(synth.getVoices());
+    };
+    const timer = setTimeout(settle, timeoutMs);
+    synth.addEventListener(
+      'voiceschanged',
+      () => {
+        clearTimeout(timer);
+        settle();
+      },
+      { once: true },
+    );
+  });
+}
+
+/**
  * 朗读文本。无论成功、结束还是出错都 resolve，避免调用链卡死。
  * 注意：iOS Safari 需要用户手势后语音才可用，见 unlockSpeech()。
  */
-export function speak(text: string, lang: 'zh-CN' | 'en-US'): Promise<void> {
-  return new Promise((resolve) => {
-    const synth = window.speechSynthesis;
+export async function speak(text: string, lang: 'zh-CN' | 'en-US'): Promise<void> {
+  const synth = window.speechSynthesis;
+  const voices = await voicesReady(800);
+  const voice = pickVoice(voices, lang);
+
+  await new Promise<void>((resolve) => {
     const utterance = new SpeechSynthesisUtterance(text);
-    const voice = pickVoice(synth.getVoices(), lang);
     if (voice) utterance.voice = voice;
     utterance.lang = lang;
     utterance.rate = 0.85;
