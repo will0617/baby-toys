@@ -151,3 +151,100 @@ const autoplayData = list.map((v) => ({
     white-space: nowrap;
   }
 </style>
+
+<script>
+  import type { VehicleView } from '../../scripts/autoplay';
+  import { neighborViews, startAutoplay } from '../../scripts/autoplay';
+  import { isSpeechSupported, speak, unlockSpeech } from '../../scripts/speak';
+
+  const dataEl = document.getElementById('autoplay-data');
+  if (dataEl) {
+    const parsed = JSON.parse(dataEl.textContent ?? '{}') as {
+      startIndex: number;
+      vehicles: VehicleView[];
+    };
+    const views = parsed.vehicles;
+    const supported = isSpeechSupported();
+
+    const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+    const photo = $<HTMLImageElement>('photo');
+    const nameZh = $<HTMLSpanElement>('name-zh');
+    const nameEn = $<HTMLSpanElement>('name-en');
+    const fact = $<HTMLParagraphElement>('fact');
+    const prevLink = $<HTMLAnchorElement>('prev');
+    const nextLink = $<HTMLAnchorElement>('next');
+    const autoBtn = $<HTMLButtonElement>('autoplay-btn');
+
+    const currentIndex = (): number => {
+      const currentId = location.pathname.split('/').pop() ?? '';
+      const i = views.findIndex((v) => v.id === currentId);
+      return i === -1 ? 0 : i;
+    };
+
+    const apply = (view: VehicleView): void => {
+      photo.src = view.image;
+      photo.alt = `${view.nameZh}（${view.nameEn}）的真实照片`;
+      nameZh.textContent = view.nameZh;
+      nameEn.textContent = view.nameEn;
+      fact.textContent = view.factZh;
+      const { prev, next } = neighborViews(views, view.id);
+      prevLink.href = prev.url;
+      prevLink.textContent = `⬅️ ${prev.nameZh}`;
+      nextLink.href = next.url;
+      nextLink.textContent = `${next.nameZh} ➡️`;
+    };
+
+    let stop: (() => void) | null = null;
+    let playing = false;
+
+    const stopPlaying = (): void => {
+      if (!playing) return;
+      stop?.();
+      stop = null;
+      playing = false;
+      autoBtn.textContent = '▶️ 自动连播';
+    };
+
+    for (const { id, lang, text } of [
+      { id: 'speak-zh', lang: 'zh-CN' as const, text: () => views[currentIndex()].nameZh },
+      { id: 'speak-en', lang: 'en-US' as const, text: () => views[currentIndex()].nameEn },
+    ]) {
+      const btn = $<HTMLButtonElement>(id);
+      if (!supported) {
+        btn.disabled = true;
+        btn.title = '当前浏览器不支持语音';
+        continue;
+      }
+      btn.addEventListener('click', () => {
+        stopPlaying();
+        unlockSpeech();
+        void speak(text(), lang);
+      });
+    }
+
+    if (!supported) {
+      autoBtn.remove();
+    } else {
+      autoBtn.addEventListener('click', () => {
+        if (playing) {
+          stopPlaying();
+          return;
+        }
+        unlockSpeech();
+        playing = true;
+        autoBtn.textContent = '⏸️ 停止连播';
+        stop = startAutoplay(views, currentIndex(), apply, speak);
+      });
+    }
+
+    // 任何点击（连播按钮自身除外）都退出连播——误触友好
+    document.addEventListener(
+      'click',
+      (event) => {
+        if ((event.target as HTMLElement).closest('#autoplay-btn')) return;
+        stopPlaying();
+      },
+      true,
+    );
+  }
+</script>
