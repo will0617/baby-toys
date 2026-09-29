@@ -7,7 +7,7 @@ export interface SimpleVoice {
  * 从可用声音中挑选最匹配目标语言的。
  * 先精确匹配（兼容 zh_CN/zh-CN 与大小写），再退化为语言前缀匹配（zh-CN → zh）。
  */
-export function pickVoice(voices: SimpleVoice[], lang: string): SimpleVoice | undefined {
+export function pickVoice<T extends SimpleVoice>(voices: T[], lang: string): T | undefined {
   const normalized = lang.replace('_', '-').toLowerCase();
   const exact = voices.find((v) => v.lang.replace('_', '-').toLowerCase() === normalized);
   if (exact) return exact;
