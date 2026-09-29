@@ -4,15 +4,35 @@ export interface SimpleVoice {
 }
 
 /**
+ * macOS/Chrome 暴露的"搞怪/古董"系统声音（Albert、Bad News、Bells 等），
+ * 发音沙哑失真，绝不能让幼儿跟读。按名字子串排除。
+ */
+const NOVELTY_VOICE =
+  /(albert|bad news|good news|bahh|bells|boing|bubbles|cellos|deranged|hysterical|junior|organ|pipes|ralph|trinoids|princess|wobble|jester|superstar|zarvox|whisper|grandma|grandpa|fred|flo|sandy|eddy|reed|rocko|shelley)/i;
+
+/** 已知高质量声音：Chrome 的 Google 网络语音、macOS/Edge 的自然人声。 */
+const PREFERRED_VOICE =
+  /(google|samantha|aria|ava|jenny|zira|guy|libby|sonia|natasha|serena|daniel|karen|moira|tessa|allison|nicky)/i;
+
+/**
  * 从可用声音中挑选最匹配目标语言的。
- * 先精确匹配（兼容 zh_CN/zh-CN 与大小写），再退化为语言前缀匹配（zh-CN → zh）。
+ * 匹配顺序：精确语言代码（兼容 zh_CN/zh-CN 与大小写）→ 语言前缀（zh-CN → zh）。
+ * 质量排序：已知高质量声音 > 非搞怪声音 > 搞怪声音（保底，确保仍能发声）。
  */
 export function pickVoice<T extends SimpleVoice>(voices: T[], lang: string): T | undefined {
   const normalized = lang.replace('_', '-').toLowerCase();
-  const exact = voices.find((v) => v.lang.replace('_', '-').toLowerCase() === normalized);
-  if (exact) return exact;
-  const prefix = normalized.slice(0, 2);
-  return voices.find((v) => v.lang.replace('_', '-').toLowerCase().startsWith(prefix));
+  const langOf = (v: SimpleVoice) => v.lang.replace('_', '-').toLowerCase();
+
+  const exact = voices.filter((v) => langOf(v) === normalized);
+  const pool =
+    exact.length > 0 ? exact : voices.filter((v) => langOf(v).startsWith(normalized.slice(0, 2)));
+  if (pool.length === 0) return undefined;
+
+  const preferred = pool.find((v) => PREFERRED_VOICE.test(v.name));
+  if (preferred) return preferred;
+
+  const normal = pool.find((v) => !NOVELTY_VOICE.test(v.name));
+  return normal ?? pool[0];
 }
 
 export function isSpeechSupported(): boolean {

@@ -26,4 +26,28 @@ describe('pickVoice', () => {
   it('空声音列表返回 undefined', () => {
     expect(pickVoice([], 'en-US')).toBeUndefined();
   });
+
+  it('跳过系统搞怪/古董声音（如 Albert），选正常声音', () => {
+    const voices = [
+      { lang: 'en-US', name: 'Albert' },
+      { lang: 'en-US', name: 'Samantha' },
+    ];
+    expect(pickVoice(voices, 'en-US')?.name).toBe('Samantha');
+  });
+
+  it('优先已知高质量声音（Google 网络语音 > 其他正常声音）', () => {
+    const voices = [
+      { lang: 'en-US', name: 'Samantha' },
+      { lang: 'en-US', name: 'Google US English' },
+    ];
+    expect(pickVoice(voices, 'en-US')?.name).toBe('Google US English');
+  });
+
+  it('候选全部是搞怪声音时返回第一个（保证仍能发声）', () => {
+    const voices = [
+      { lang: 'en-US', name: 'Albert' },
+      { lang: 'en-US', name: 'Bells' },
+    ];
+    expect(pickVoice(voices, 'en-US')?.name).toBe('Albert');
+  });
 });
