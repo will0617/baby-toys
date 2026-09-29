@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { categories } from '../../data/categories';
+import { vehicles } from '../../data/vehicles';
+import { getNeighbors, vehiclesInCategory } from '../../lib/navigation';
+
+export function getStaticPaths() {
+  return vehicles.map((v) => ({ params: { id: v.id } }));
+}
+
+const id = Astro.params.id!;
+const vehicle = vehicles.find((v) => v.id === id)!;
+const category = categories.find((c) => c.id === vehicle.category)!;
+const list = vehiclesInCategory(vehicles, vehicle.category);
+const index = list.findIndex((v) => v.id === vehicle.id);
+const neighbors = getNeighbors(list, vehicle.id)!;
+
+const autoplayData = list.map((v) => ({
+  id: v.id,
+  nameZh: v.nameZh,
+  nameEn: v.nameEn,
+  image: v.image,
+  factZh: v.factZh,
+  url: `/vehicle/${v.id}`,
+}));
+---
+<Layout title={`${vehicle.nameZh} ${vehicle.nameEn} · 宝宝交通工具图鉴`}>
+  <main class="detail">
+    <header class="top">
+      <a class="back" href={`/category/${category.id}`}>← {category.nameZh}</a>
+      <span class="cat">{category.emoji}</span>
+    </header>
+
+    <figure class="photo">
+      <img
+        id="photo"
+        src={vehicle.image}
+        alt={`${vehicle.nameZh}（${vehicle.nameEn}）的真实照片`}
+        width="1200"
+        height="900"
+      />
+    </figure>
+
+    <div class="names">
+      <button id="speak-zh" class="speak" data-speak="zh">
+        🔊 <span id="name-zh">{vehicle.nameZh}</span>
+      </button>
+      <button id="speak-en" class="speak" data-speak="en">
+        <span id="name-en">{vehicle.nameEn}</span>
+      </button>
+    </div>
+
+    <p class="fact" id="fact">{vehicle.factZh}</p>
+
+    <div class="controls">
+      <a id="prev" class="nav-btn" href={`/vehicle/${neighbors.prev.id}`}>⬅️ {neighbors.prev.nameZh}</a>
+      <button id="autoplay-btn" class="play">▶️ 自动连播</button>
+      <a id="next" class="nav-btn" href={`/vehicle/${neighbors.next.id}`}>{neighbors.next.nameZh} ➡️</a>
+    </div>
+
+    <script
+      type="application/json"
+      id="autoplay-data"
+      set:html={JSON.stringify({ startIndex: index, vehicles: autoplayData })}
+    ></script>
+  </main>
+</Layout>
+
+<style>
+  .detail { max-width: 720px; margin: 0 auto; padding: 8px 16px 32px; }
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 4px 0 10px; }
+  .back {
+    text-decoration: none;
+    color: #4a90d9;
+    font-size: 17px;
+    padding: 10px 12px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .cat { font-size: 28px; }
+  .photo { margin: 0; }
+  .photo img {
+    width: 100%;
+    height: min(52vh, 460px);
+    object-fit: cover;
+    border-radius: 20px;
+    background: #eee;
+  }
+  .names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .speak {
+    font-size: 26px;
+    font-weight: 800;
+    padding: 12px 20px;
+    min-height: 56px;
+    border: 3px solid #ffd166;
+    border-radius: 999px;
+    background: #fff;
+    cursor: pointer;
+  }
+  #speak-en { font-size: 20px; color: #555; border-color: #a8c8f0; }
+  button:disabled { opacity: 0.4; }
+  .fact {
+    font-size: 17px;
+    line-height: 1.7;
+    background: #fff8e6;
+    border-radius: 14px;
+    padding: 12px 16px;
+    margin: 16px 0;
+  }
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+  .nav-btn {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    background: #fff;
+    border-radius: 999px;
+    padding: 14px 8px;
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .play {
+    font-size: 15px;
+    font-weight: 700;
+    background: #4a90d9;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 14px;
+    min-height: 52px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+</style>
