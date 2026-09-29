@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = '给宝宝看的交通工具图鉴：真实照片，中英双语发音，点一点就发声。',
+} = Astro.props;
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fdfcf8" />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <slot />
+    <footer class="site-footer">
+      <a href="/attribution">图片来源与致谢</a>
+      <span>· 为爱小火车的你而做 · {year}</span>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  * { box-sizing: border-box; }
+  :root { font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+  body { margin: 0; background: #fdfcf8; color: #333; }
+  img { display: block; max-width: 100%; }
+  .site-footer {
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+    padding: 24px 16px 40px;
+  }
+  .site-footer a { color: #999; }
+</style>

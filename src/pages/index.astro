@@ -1,4 +1,50 @@
-<html lang="zh-CN">
-  <head><meta charset="utf-8" /><title>baby-toys</title></head>
-  <body><h1>脚手架 OK</h1></body>
-</html>
+---
+import Layout from '../layouts/Layout.astro';
+import { categories } from '../data/categories';
+import { vehicles } from '../data/vehicles';
+import { vehiclesInCategory } from '../lib/navigation';
+---
+<Layout title="宝宝交通工具图鉴 🚂🚗✈️">
+  <main class="home">
+    <h1 class="logo">🚗 宝宝交通工具图鉴 ✈️</h1>
+    <p class="subtitle">真实照片 · 中英双语 · 点一点听名字</p>
+    <div class="grid">
+      {categories.map((c) => (
+        <a class="cat-card" href={`/category/${c.id}`}>
+          <span class="emoji">{c.emoji}</span>
+          <span class="name">{c.nameZh}</span>
+          <span class="count">{vehiclesInCategory(vehicles, c.id).length} 种</span>
+          <span class="en">{c.nameEn}</span>
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .home { max-width: 720px; margin: 0 auto; padding: 24px 16px 24px; text-align: center; }
+  .logo { font-size: 26px; margin: 8px 0 4px; }
+  .subtitle { color: #888; margin: 0 0 20px; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .cat-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 22px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    min-height: 132px;
+  }
+  .cat-card:active { transform: scale(0.97); }
+  .emoji { font-size: 46px; line-height: 1; }
+  .name { font-size: 22px; font-weight: 700; }
+  .count { font-size: 13px; color: #4a90d9; }
+  .en { font-size: 12px; color: #aaa; }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
