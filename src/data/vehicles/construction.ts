@@ -1,0 +1,108 @@
+import type { Vehicle } from '../types';
+
+export const construction: Vehicle[] = [
+  {
+    id: 'excavator',
+    nameZh: '挖掘机',
+    nameEn: 'Excavator',
+    category: 'construction',
+    image: '/images/vehicles/excavator.webp',
+    factZh: '挖掘机有大铁手臂，一铲子能挖起好多土。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Kubota_excavator_of_Naval_Mobile_Construction_Battalion_5.JPEG',
+      license: 'Public Domain',
+      author: 'Joshua J. Wahl, U.S. Navy',
+    },
+  },
+  {
+    id: 'bulldozer',
+    nameZh: '推土机',
+    nameEn: 'Bulldozer',
+    category: 'construction',
+    image: '/images/vehicles/bulldozer.webp',
+    factZh: '推土机前面有大铁板，把土推得平平的。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Komatsu_bulldozer_pushing_coal_in_Power_plant_Ljubljana_(winter_2017).jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Petar Milošević',
+    },
+  },
+  {
+    id: 'crane',
+    nameZh: '起重机',
+    nameEn: 'Crane',
+    category: 'construction',
+    image: '/images/vehicles/crane.webp',
+    factZh: '起重机有高高的长脖子，能吊起很重的东西。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Mobile_telescopic_crane_of_the_JSDF_salvaging_a_fuel_tanker.jpg',
+      license: 'Public Domain',
+      author: 'Japan Ground Self-Defense Force',
+    },
+  },
+  {
+    id: 'cement-mixer',
+    nameZh: '混凝土搅拌车',
+    nameEn: 'Cement Mixer',
+    category: 'construction',
+    image: '/images/vehicles/cement-mixer.webp',
+    factZh: '搅拌车的大罐子转呀转，装着修马路的混凝土。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:CAMC_concrete_mixer_truck_Xing_Kaima._Spielvogel_2.jpg',
+      license: 'CC0',
+      author: 'Spielvogel',
+    },
+  },
+  {
+    id: 'road-roller',
+    nameZh: '压路机',
+    nameEn: 'Road Roller',
+    category: 'construction',
+    image: '/images/vehicles/road-roller.webp',
+    factZh: '压路机有圆圆的大轮子，把马路压得平平的。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:US_Navy_030409-N-2517J-002_Task_Force_Charlie_Seabees_assigned_to_Naval_Mobile_Construction_Battalion_One_Thirty_Three_(NMCB-133)_and_Salvage_Unit_Two_(SU-2)_provide_road_improvements_on_one_of_the_main_supply_routes.jpg',
+      license: 'Public Domain',
+      author: "Photographer's Mate 2nd Class Jacob Johns, U.S. Navy",
+    },
+  },
+  {
+    id: 'loader',
+    nameZh: '装载机',
+    nameEn: 'Wheel Loader',
+    category: 'construction',
+    image: '/images/vehicles/loader.webp',
+    factZh: '装载机前面有大铲子，把沙子铲进卡车里。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Kawasaki_Front_Loader.jpg',
+      license: 'CC BY 4.0',
+      author: 'Fletcher',
+    },
+  },
+  {
+    id: 'dump-truck',
+    nameZh: '翻斗车',
+    nameEn: 'Dump Truck',
+    category: 'construction',
+    image: '/images/vehicles/dump-truck.webp',
+    factZh: '翻斗车的车斗会翘起来，哗啦啦倒出砂石。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Logan_Lake_Mining_Dump_Truck_1.jpg',
+      license: 'CC BY-SA 2.0',
+      author: 'dave_7',
+    },
+  },
+  {
+    id: 'forklift',
+    nameZh: '叉车',
+    nameEn: 'Forklift',
+    category: 'construction',
+    image: '/images/vehicles/forklift.webp',
+    factZh: '叉车前面有两根铁叉，把货物举上又举下。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Forklift_Operator_Smile.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Marius140%',
+    },
+  },
+];

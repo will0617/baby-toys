@@ -3,5 +3,6 @@ import { trains } from './trains';
 import { cars } from './cars';
 import { planes } from './planes';
 import { boats } from './boats';
+import { construction } from './construction';
 
-export const vehicles: Vehicle[] = [...trains, ...cars, ...planes, ...boats];
+export const vehicles: Vehicle[] = [...trains, ...cars, ...planes, ...boats, ...construction];
