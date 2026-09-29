@@ -1,0 +1,108 @@
+import type { Vehicle } from '../types';
+
+export const boats: Vehicle[] = [
+  {
+    id: 'sailboat',
+    nameZh: '帆船',
+    nameEn: 'Sailboat',
+    category: 'boats',
+    image: '/images/vehicles/sailboat.webp',
+    factZh: '帆船靠大风推着白帆，在水面上轻轻前进。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Moonbeam_-_Brest_2008-10.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'Ludovic Péron',
+    },
+  },
+  {
+    id: 'cargo-ship',
+    nameZh: '货轮',
+    nameEn: 'Cargo Ship',
+    category: 'boats',
+    image: '/images/vehicles/cargo-ship.webp',
+    factZh: '货轮是大大的船，能运几千个集装箱。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:2011-06-03_PIONEER_BAY_-_IMO_9164550.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Gordon Leggett',
+    },
+  },
+  {
+    id: 'yacht',
+    nameZh: '游艇',
+    nameEn: 'Yacht',
+    category: 'boats',
+    image: '/images/vehicles/yacht.webp',
+    factZh: '游艇是小巧的漂亮船，在海上开心地兜风。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Yacht_Sea_Owl_1_September_2016.png',
+      license: 'CC BY-SA 4.0',
+      author: 'Godsfriendchuck',
+    },
+  },
+  {
+    id: 'ferry',
+    nameZh: '渡轮',
+    nameEn: 'Ferry',
+    category: 'boats',
+    image: '/images/vehicles/ferry.webp',
+    factZh: '渡轮像水上的公交车，载着人们过江过海。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:2019-03-12_NAVIMAG_ferry,_EVANGELISTAS_-_IMO_7627962.jpg',
+      license: 'CC BY-SA 4.0',
+      author: 'Gordon Leggett',
+    },
+  },
+  {
+    id: 'fishing-boat',
+    nameZh: '渔船',
+    nameEn: 'Fishing Boat',
+    category: 'boats',
+    image: '/images/vehicles/fishing-boat.webp',
+    factZh: '渔船每天出海捕鱼，带回来好吃的鱼和虾。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Mortagne-sur-Gironde_Civellier_Mayflowers_2013.jpg',
+      license: 'CC BY-SA 3.0',
+      author: 'JLPC',
+    },
+  },
+  {
+    id: 'kayak',
+    nameZh: '皮划艇',
+    nameEn: 'Kayak',
+    category: 'boats',
+    image: '/images/vehicles/kayak.webp',
+    factZh: '皮划艇细细长长的，用小桨划着往前走。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:2015-08_playboating_Durance_09.jpg',
+      license: 'CC BY-SA 4.0',
+      author: '0x010C',
+    },
+  },
+  {
+    id: 'submarine',
+    nameZh: '潜水艇',
+    nameEn: 'Submarine',
+    category: 'boats',
+    image: '/images/vehicles/submarine.webp',
+    factZh: '潜水艇能钻到水底下，悄悄地在水里前进。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Submarine_M-296_2016_G2.jpg',
+      license: 'Public Domain',
+      author: 'George Chernilevsky',
+    },
+  },
+  {
+    id: 'dragon-boat',
+    nameZh: '龙舟',
+    nameEn: 'Dragon Boat',
+    category: 'boats',
+    image: '/images/vehicles/dragon-boat.webp',
+    factZh: '龙舟是长长的木船，大家一起划桨比赛谁最快。',
+    imageSource: {
+      url: 'https://commons.wikimedia.org/wiki/File:Dragon_Boat_Race_Team_Rowers_aboarding_Boat_before_Race_20170530fb.jpg',
+      license: 'CC0',
+      author: '玄史生',
+    },
+  },
+];
